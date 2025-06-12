@@ -1,32 +1,44 @@
-# 📊 Match Analyzer App
-
-En Streamlit-applikation som analyserar fotbollsmatcher utifrån en enkel matchlista, t.ex. från en stryktipsrad. Appen använder API-Football (via RapidAPI) för att hämta aktuell statistik och GPT-4 via OpenAI för att generera naturliga matchanalyser.
+Här får du en uppdaterad `README.md` med **snygga badges**, beskrivning och tydlig struktur för ditt GitHub-projekt:
 
 ---
 
-## 🚀 Funktioner
+## 📄 `README.md` – färdig att använda
 
-* 📝 Inmatning av matchlista i formatet `Hemmalag - Bortalag`
-* 📈 Hämtar form och tabellplacering via API-Football
-* 🧠 Genererar AI-baserad analys med OpenAI GPT-4
-* 📄 Exportera analysen som PDF
+````markdown
+# ⚽ Match Analyzer – AI-driven matchanalys från stryktipsrader
+
+[![Made with Streamlit](https://img.shields.io/badge/Made%20with-Streamlit-blue?logo=streamlit)](https://streamlit.io/)
+[![OpenAI Powered](https://img.shields.io/badge/Powered%20by-OpenAI-ffb400?logo=openai)](https://platform.openai.com/)
+[![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
-## 🔧 Installation
+## 🎯 Vad är Match Analyzer?
 
-### 1. Klona repo
+**Match Analyzer** är en AI-assistent som automatiskt analyserar fotbollsmatcher baserat på en enkel textinput (t.ex. från Stryktipset). Appen använder OpenAI:s språkmodell och API-Football för att generera:
+
+- 🔥 Lagform (senaste matcher)
+- 🚑 Skador och avstängningar
+- 📊 Tabellplacering
+- 🧠 Matchanalys (förväntad bild av matchen)
+
+---
+
+## 🚀 Kom igång
+
+### 1. Klona projektet
 
 ```bash
-git clone https://github.com/ditt-användarnamn/match-analyzer.git
+git clone https://github.com/<ditt-användarnamn>/match-analyzer.git
 cd match-analyzer
-```
+````
 
-### 2. Skapa virtuell miljö (valfritt men rekommenderat)
+### 2. Skapa och aktivera en virtuell miljö
 
 ```bash
 python -m venv venv
-venv\Scripts\activate  # Windows
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
 ```
 
 ### 3. Installera beroenden
@@ -35,21 +47,14 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
----
+### 4. Lägg till API-nycklar
 
-## 🔑 API-nycklar
-
-Skapa filen `.streamlit/secrets.toml` och fyll i:
+Skapa filen `.streamlit/secrets.toml`:
 
 ```toml
-OPENAI_API_KEY = "din-openai-api-nyckel"
-RAPIDAPI_KEY = "din-rapidapi-nyckel"
+OPENAI_API_KEY = "din-openai-nyckel"
+RAPIDAPI_KEY = "din-rapidapi-api-football-nyckel"
 ```
-
-👉 Skaffa nycklar från:
-
-* [OpenAI](https://platform.openai.com/account/api-keys)
-* [API-Football (RapidAPI)](https://rapidapi.com/api-sports/api/api-football)
 
 ---
 
@@ -59,37 +64,41 @@ RAPIDAPI_KEY = "din-rapidapi-nyckel"
 streamlit run match_analysis_app.py
 ```
 
-Eller dubbelklicka på `start_app.bat` (Windows).
-
-Appen körs på: `http://localhost:8501`
+Appen körs nu lokalt på: [http://localhost:8501](http://localhost:8501)
 
 ---
 
-## 📁 Filstruktur
+## 📁 Projektstruktur
 
-```bash
+```
 match-analyzer/
-├── match_analysis_app.py        # Streamlit-huvudfil
-├── utils/
-│   ├── fetch_data.py           # Hämtar statistik från API-Football
-│   └── pdf_export.py           # Exporterar PDF
-├── .streamlit/
-│   └── secrets.toml            # API-nycklar
-├── start_app.bat               # Startscript för Windows
-├── requirements.txt            # Python-paket
-└── README.md                   # Dokumentation
+├── .streamlit/         # API-nycklar
+├── assets/             # Logotyper, grafik
+├── utils/              # Datahämtning och PDF-export
+├── match_analysis_app.py
+├── requirements.txt
+├── start_app.bat
+└── README.md
 ```
 
 ---
 
-## 🧠 Framtida förbättringar
+## 📄 Licens
 
-* Automatisk ligatolkning
-* Live odds-integration
-* Stöd för skadedata via API
+MIT – du får använda, modifiera och sprida fritt.
 
 ---
 
-## 🧑‍💻 Skapad av
+## 💬 Feedback & utveckling
 
-[**Johan Karlsson** – Komba GIS AB](https://www.linkedin.com/in/kombagis)
+Vill du bidra eller komma med förbättringsförslag? Skicka ett pull request eller mejla [johan@kombagis.se](mailto:johan@kombagis.se).
+
+```
+
+---
+
+Vill du att jag även:
+- Skapar en `LICENSE`-fil (MIT)?
+- Gör en demo-PDF som exempel?
+- Förbereder en deployment till [Streamlit Cloud](https://share.streamlit.io)?
+```
