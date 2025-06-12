@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# venv
+venv/
+.env/
+.venv/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Byte-compiled / cache
+*.pyo
+*.pyd
+*.pdb
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# PDF exports
+*.pdf
