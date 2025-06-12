@@ -1,7 +1,3 @@
-Här får du en uppdaterad `README.md` med **snygga badges**, beskrivning och tydlig struktur för ditt GitHub-projekt:
-
----
-
 ## 📄 `README.md` – färdig att använda
 
 ````markdown
