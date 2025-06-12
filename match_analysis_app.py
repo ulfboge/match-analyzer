@@ -1,3 +1,4 @@
+import urllib.parse
 
 import streamlit as st
 from openai import OpenAI
@@ -36,13 +37,16 @@ if input_text:
         for team in teams:
             liga = get_league_by_team(team)
             
+        
         if "error" in liga:
             st.warning("⚠️ Laginformation kunde inte hämtas. Här kan du söka manuellt:")
+            search_query = urllib.parse.quote(team)
             st.markdown(
-                f"[🔍 Sök efter '{team}' på Svenska Spel](https://svenskaspel.se/sport/spel/stryket)",
+                f"[🔍 Sök efter '{{team}}' på Svenska Spel](https://svenskaspel.se/sport/spel/stryket?query={{search_query}})",
                 unsafe_allow_html=True
             )
             continue
+
 else:
                 st.info(f"{team} spelar i {liga['name']} ({liga['country']}, {liga['season']})")
 
