@@ -1,11 +1,8 @@
-## 📄 `README.md` – färdig att använda
-
-````markdown
 # ⚽ Match Analyzer – AI-driven matchanalys från stryktipsrader
 
 [![Made with Streamlit](https://img.shields.io/badge/Made%20with-Streamlit-blue?logo=streamlit)](https://streamlit.io/)
 [![OpenAI Powered](https://img.shields.io/badge/Powered%20by-OpenAI-ffb400?logo=openai)](https://platform.openai.com/)
-[![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 ---
 
@@ -20,14 +17,39 @@
 
 ---
 
+## 🔍 Demo
+
+Vill du se hur appen fungerar?
+
+🖥️ **Webbdemo:** *(kommer snart)*  
+🚀 Du kan deploya appen själv till [Streamlit Cloud](https://share.streamlit.io) och köra den direkt i webbläsaren.
+
+### 📸 Skärmbild
+Här är ett exempel på en inmatning i appen och hur analysen genereras:
+
+![Demo](assets/demo_screenshot.png)
+
+> Lägg en skärmdump i `assets/`-mappen med filnamnet `demo_screenshot.png`
+
+---
+
+### 📤 Alternativ: Skapa din egen demo med Streamlit Cloud
+1. Gå till [https://share.streamlit.io](https://share.streamlit.io)
+2. Logga in med GitHub
+3. Välj ditt repo: `match-analyzer`
+4. Ange fil: `match_analysis_app.py`
+5. Appen körs nu online!
+
+---
+
 ## 🚀 Kom igång
 
 ### 1. Klona projektet
 
 ```bash
-git clone https://github.com/<ditt-användarnamn>/match-analyzer.git
+git clone https://github.com/ulfboge/match-analyzer.git
 cd match-analyzer
-````
+```
 
 ### 2. Skapa och aktivera en virtuell miljö
 
@@ -88,13 +110,3 @@ MIT – du får använda, modifiera och sprida fritt.
 ## 💬 Feedback & utveckling
 
 Vill du bidra eller komma med förbättringsförslag? Skicka ett pull request eller mejla [johan@kombagis.se](mailto:johan@kombagis.se).
-
-```
-
----
-
-Vill du att jag även:
-- Skapar en `LICENSE`-fil (MIT)?
-- Gör en demo-PDF som exempel?
-- Förbereder en deployment till [Streamlit Cloud](https://share.streamlit.io)?
-```
