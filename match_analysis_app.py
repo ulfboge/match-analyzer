@@ -1,50 +1,47 @@
+
 import streamlit as st
 from openai import OpenAI
-from utils.fetch_data import get_match_stats
-from utils.pdf_export import export_analysis_to_pdf
+import os
+from utils.fetch_data import get_league_by_team
 
-# Initiera OpenAI-klienten
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Generera analys med nya OpenAI API
+st.set_page_config(page_title="Match Analyzer", layout="centered")
+st.title("⚽ Match Analyzer – AI-assistent för fotbollsanalys")
+
+input_text = st.text_area(
+    "Matchlista", 
+    height=200, 
+    placeholder="Exempel:\nIlves - KuPS\nMariehamn - VPS"
+)
+
 def generate_analysis(prompt):
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
-            {"role": "system", "content": "Du är en sportanalytiker som skriver tydliga matchanalyser."},
+            {"role": "system", "content": "Du är en sportjournalist som analyserar matcher med statistik, form, skador och tabell."},
             {"role": "user", "content": prompt}
         ]
     )
     return response.choices[0].message.content
 
-# Streamlit UI
-st.set_page_config(page_title="Match Analyzer", page_icon="⚽")
-st.title("⚽ Match Analyzer")
-st.markdown("Mata in dina matcher (t.ex. från en Stryktipsrad):")
+if input_text:
+    teams = []
+    for line in input_text.splitlines():
+        if "-" in line:
+            home, away = [t.strip() for t in line.split("-")]
+            teams.extend([home, away])
 
-input_text = st.text_area("Matchlista", height=200, placeholder="Exempel:
-1. Arsenal - Liverpool
-2. AIK - Hammarby")
+    with st.expander("🔍 Ligainfo (upplockat automatiskt från RapidAPI)"):
+        for team in teams:
+            liga = get_league_by_team(team)
+            if "error" in liga:
+                st.warning(f"{team}: {liga['error']}")
+            else:
+                st.info(f"{team} spelar i {liga['name']} ({liga['country']}, {liga['season']})")
 
-if st.button("Analysera"):
-    matches = [line.split('.', 1)[1].strip() for line in input_text.strip().splitlines() if '-' in line]
-    stats = get_match_stats(matches)
-
-    prompt = ""
-    for m in stats:
-        prompt += f"""
-Analysera matchen mellan {m['teams']}:
-- Form för hemmalag: {m['home_form']}
-- Form för bortalag: {m['away_form']}
-- Tabellposition: {m['table']}
-- Skador: {m['injuries']}
-"""
-
-    output = generate_analysis(prompt)
-    st.markdown("### 📊 Analys")
-    st.write(output)
-
-    if st.button("Exportera till PDF"):
-        filepath = export_analysis_to_pdf(output)
-        with open(filepath, "rb") as f:
-            st.download_button("Ladda ner PDF", f, file_name="matchanalys.pdf")
+    if st.button("🔎 Analysera matcher"):
+        with st.spinner("Analyserar..."):
+            output = generate_analysis(input_text)
+            st.subheader("🧠 AI-genererad matchanalys")
+            st.markdown(output)
