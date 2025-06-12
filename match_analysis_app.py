@@ -48,6 +48,6 @@ if input_text:
 
 # ℹ️ Info-ruta i sidopanel
 st.sidebar.markdown(
-    "[❓ Lag saknas? Sök på Svenska Spel](https://svenskaspel.se/sport/spel/stryket)",
+    "<span style="font-size: 16px;">❓ <a href="https://svenskaspel.se/sport/spel/stryket" target="_blank">Sök på Svenska Spel</a></span>",
     unsafe_allow_html=True
 )
