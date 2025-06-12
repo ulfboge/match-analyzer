@@ -45,3 +45,9 @@ if input_text:
             output = generate_analysis(input_text)
             st.subheader("🧠 AI-genererad matchanalys")
             st.markdown(output)
+
+# ℹ️ Info-ruta i sidopanel
+st.sidebar.markdown(
+    "[❓ Lag saknas? Sök på Svenska Spel](https://svenskaspel.se/sport/spel/stryket)",
+    unsafe_allow_html=True
+)
