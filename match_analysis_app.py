@@ -35,9 +35,15 @@ if input_text:
     with st.expander("🔍 Ligainfo (upplockat automatiskt från RapidAPI)"):
         for team in teams:
             liga = get_league_by_team(team)
-            if "error" in liga:
-                st.warning(f"{team}: {liga['error']}")
-            else:
+            
+        if "error" in liga:
+            st.warning("⚠️ Laginformation kunde inte hämtas. Här kan du söka manuellt:")
+            st.markdown(
+                f"[🔍 Sök efter '{team}' på Svenska Spel](https://svenskaspel.se/sport/spel/stryket)",
+                unsafe_allow_html=True
+            )
+            continue
+else:
                 st.info(f"{team} spelar i {liga['name']} ({liga['country']}, {liga['season']})")
 
     if st.button("🔎 Analysera matcher"):
